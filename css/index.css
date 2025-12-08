@@ -1,0 +1,31 @@
+main .body {
+  margin: 50px 100px 50px 100px;
+  width: auto;
+  height: auto;
+  background-color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+}
+main .body .welcome {
+  text-align: center;
+  margin-top: 50px;
+}
+
+main .body .welcome p {
+  font-size: 24px;
+  color: #333333;
+  margin: 20px 0;
+}
+main .body .welcome img {
+  width: 300px;
+  height: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+main .body .welcome a {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 20px;
+  color: #007BFF;
+  text-decoration: none;
+}

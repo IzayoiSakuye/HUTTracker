@@ -1,0 +1,32 @@
+
+header{
+  background-color: rgba(88, 13, 85, 0.8);
+  padding: 30px 0 50px 0;
+  text-align: center;
+  background-image: linear-gradient(#580d55,#f7f8f9);
+}
+header h1{
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+header .nav ul{
+  padding: 50px 0 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+header .nav ul li {
+  font-size: 20px;
+  color: #333;
+  font-weight: bold;
+}
+
+footer{
+  background-color: #f7f8f9;
+  text-align: center;
+  padding: 10px;
+  font-size: 15px;
+  color: #b3aeae;
+}
