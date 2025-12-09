@@ -5,6 +5,7 @@ main .body {
   background-color: #ffffff;
   border: 2px solid #ffffff;
   border-radius: 20px;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 main .body .welcome {
   text-align: center;

@@ -2,3 +2,54 @@ header .nav ul li .contest {
   color: #580d55;
   border-bottom: 2px solid #580d55;
 }
+
+/* 致谢样式 */
+main .thx{
+  text-align: center;
+  margin-top: 50px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* 存放比赛的矩形边框 */
+main .show-recent-contest,
+main .show-running-contest,
+main .show-contest{
+  text-align: center;
+  margin: 15px 500px 15px 500px;
+  width: auto;
+  height: auto;
+  background-color: #ffffff;
+  border: 3px solid #ffffff;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+main .show-recent-contest{
+  border: 3px solid green;
+} 
+
+main .show-running-contest{
+  height: 120px;
+  border: 3px solid darkred;
+}
+
+/* 比赛标题样式 */
+main .future-title,
+main .running-title,
+main .recent-title{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: green;
+}
+
+main .running-title{
+  color: darkred;
+}
+
+main .future-title{
+  color: black;
+}

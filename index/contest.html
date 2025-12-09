@@ -19,9 +19,73 @@
         </ul>
       </div>
   </header>
+  <main>
+    <!-- 显示三种比赛 -->
+    <div id="show-recent-contest" class="show-recent-contest"></div>
+    <div id="show-running-contest" class="show-running-contest"></div>
+    <div id="show-contest" class="show-contest"></div>
+
+    <div class="thx">
+      <p class="source">数据来源http://algcontest.rainng.com/</p>
+    </div>
+  </main>
   
+
   <footer>
         <p>Powered by HUT ACM Team</p>
   </footer>
+  <!-- 获取并渲染最近比赛 -->
+  <script src="../js/contest.js"></script>
+  <!-- 设置悬停变色 -->
+  <script>
+    // 按id获取容器
+    const recent = document.getElementById('show-recent-contest');
+    if (recent) {
+      // 添加鼠标悬停事件监听器
+      recent.addEventListener('mouseover', (e) => {
+        const link = e.target.closest('a');
+        if (link && recent.contains(link)) {
+          link.style.color = '#580d55';
+        }
+      });
+      // 添加鼠标移出事件监听器
+      recent.addEventListener('mouseout', (e) => {
+        const link = e.target.closest('a');
+        if (link && recent.contains(link)) {
+          link.style.color = '';
+        }
+      });
+    }
+    const running = document.getElementById('show-running-contest');
+    if (running) {
+      running.addEventListener('mouseover', (e) => {
+        const link = e.target.closest('a');
+        if (link && running.contains(link)) {
+          link.style.color = '#580d55';
+        }
+      });
+      running.addEventListener('mouseout', (e) => {
+        const link = e.target.closest('a');
+        if (link && running.contains(link)) {
+          link.style.color = '';
+        }
+      });
+    }
+    const future = document.getElementById('show-contest');
+    if (future) {
+      future.addEventListener('mouseover', (e) => {
+        const link = e.target.closest('a');
+        if (link && future.contains(link)) {
+          link.style.color = '#580d55';
+        }
+      });
+      future.addEventListener('mouseout', (e) => {
+        const link = e.target.closest('a');
+        if (link && future.contains(link)) {
+          link.style.color = '';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
