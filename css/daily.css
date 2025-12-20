@@ -2,3 +2,59 @@ header .nav ul li .daily {
   color: #580d55;
   border-bottom: 2px solid #580d55;
 }
+
+.card {
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) ;
+  margin:0px 100px;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.card-text{
+  display: flex;
+  justify-content: flex-end;
+  color: #666666;
+  font-size: 10px;
+  text-decoration: line-through;
+}
+
+
+
+.content {
+
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.15) ;
+  margin: 30px 100px;
+  padding: 30px;
+  font-size: 15px;
+  color: #333333;
+}
+
+/* 上面块级代码样式 */
+.card .card-body .title {
+  padding-left: 0px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.card .card-body .title{
+  position: inherit;
+}
+
+.card .card-body .title .link {
+  margin-left: auto;
+}
+.card .card-body .title .green{
+  background-color: rgb(82, 196, 26);
+  padding: 7px 7px;
+  color: #ffffff;
+  border-radius: 10px;
+  position: relative;
+
+}
+

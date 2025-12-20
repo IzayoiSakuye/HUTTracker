@@ -8,6 +8,10 @@
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/daily.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </head>
 <body>
   <header>
@@ -37,20 +41,28 @@
       </nav>
     </header>
 
-  <body>
     <main>
-      <div class="daily-container">
-        <h2>每日一题</h2>
-        <div id="daily-problem" class="daily-problem"></div>
+      <div class="card mb-3">
+        <div class="card-body text-center">
+          <h2 class="card-title">每日一题</h2>
+          <p class="card-text">每日做一题，实力胜Jiangly</p>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <ul class="title" id="daily-title"></ul>
+          </div>
+        </div>
+        
+        <div class="content" id="daily-content"></div>
       </div>
-      <div class="thx">
-        <p class="source">数据
+    </main> 
   </body>
   <footer class="bg-light text-center py-3 mt-5">
     <p class="text-muted mb-0">Powered by HUT ACM Team</p>
   </footer>
-
   <script src="../js/nav.js"></script>
+  <script src="../js/daily.js"></script>
+
   
 </body>
 </html>
