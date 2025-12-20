@@ -61,39 +61,7 @@
   </footer>
   <!-- 获取并渲染最近比赛 -->
   <script src="../js/contest.js"></script>
-  <!-- 设置悬停变色 -->
-  <script>
-    
-    const running = document.getElementById('');
-    if (running) {
-      running.addEventListener('mouseover', (e) => {
-        const link = e.target.closest('a');
-        if (link && running.contains(link)) {
-          link.style.color = '#580d55';
-        }
-      });
-      running.addEventListener('mouseout', (e) => {
-        const link = e.target.closest('a');
-        if (link && running.contains(link)) {
-          link.style.color = '';
-        }
-      });
-    }
-    const future = document.getElementById('');
-    if (future) {
-      future.addEventListener('mouseover', (e) => {
-        const link = e.target.closest('a');
-        if (link && future.contains(link)) {
-          link.style.color = '#580d55';
-        }
-      });
-      future.addEventListener('mouseout', (e) => {
-        const link = e.target.closest('a');
-        if (link && future.contains(link)) {
-          link.style.color = '';
-        }
-      });
-    }
-  </script>
+  <script src="../js/nav.js"></script>
+ 
 </body>
 </html>

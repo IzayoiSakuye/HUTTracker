@@ -32,8 +32,12 @@ header .nav ul li .login {
   border-radius: 10px;
   transition: background-color 0.3s;
   padding: 12px 50px;
-  
-  
+
+}
+
+.unhave{
+  text-align: right;
+  margin-top: 15px;
 }
 
 /* 是否合法的样式 */

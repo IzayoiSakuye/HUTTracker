@@ -35,6 +35,11 @@ header .nav ul li .register {
   
 }
 
+.have{
+  text-align: right;
+  margin-top: 15px;
+}
+
 /* 是否合法的样式 */
 .form-control {
   border: 1px solid #ced4da;
