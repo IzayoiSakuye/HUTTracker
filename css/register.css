@@ -1,4 +1,4 @@
-header .nav ul li .login {
+header .nav ul li .register {
   color: #580d55;
   border-bottom: 2px solid #580d55;
 }
@@ -21,7 +21,7 @@ header .nav ul li .login {
   
 }
 .mb-3 {
-  margin-bottom: 20px !important;
+  margin-bottom: 10px !important;
 }
 
 .btn-primary {
@@ -32,7 +32,6 @@ header .nav ul li .login {
   border-radius: 10px;
   transition: background-color 0.3s;
   padding: 12px 50px;
-  
   
 }
 

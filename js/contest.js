@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   let errorFlagDom = false;
   let errorFlagOvse = false;
-  // 牛客与力扣的比赛
+  // 牛客的比赛
   fetch(proxyUrl)
     .then(response => {
       if (!response.ok) {
