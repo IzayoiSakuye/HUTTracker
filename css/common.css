@@ -9,6 +9,7 @@ header .container-fluid {
   padding: 10px 50px 10px;
 }
 header nav .navbar-brand {
+  color: inherit;
   font-size: 30px;
   font-weight: bold;
   padding: 30px 30px 30px 30px;

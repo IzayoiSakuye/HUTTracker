@@ -3,10 +3,6 @@ main {
   padding: 40px 0;
 }
 
-.navbar-brand:hover {
-  color: inherit;
-}
-
 .card {
   border-radius: 20px;
   background-color: #ffffff;
