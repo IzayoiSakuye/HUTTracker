@@ -7,31 +7,39 @@ header .nav ul li .contest {
 main .thx{
   text-align: center;
   margin-top: 50px;
+  margin-bottom: 30px;
   font-size: 15px;
   font-weight: bold;
 }
 
 /* 存放比赛的矩形边框 */
-main .show-recent-contest,
-main .show-running-contest,
-main .show-contest{
-  text-align: center;
-  margin: 15px 500px 15px 500px;
-  width: auto;
-  height: auto;
-  background-color: #ffffff;
-  border: 3px solid #ffffff;
+.card {
   border-radius: 20px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) ;
+  margin:50px 100px;
+}
+
+.card-body {
+  padding: 10px;
 }
 
 main .show-recent-contest{
-  border: 3px solid green;
+  box-shadow: 5px 5px 15px rgba(0, 128, 0, 0.3) ;
 } 
 
+.show-recent-contest:hover {
+  transform: translateY(-3px);
+  transition: transform 0.3s;
+}
+
 main .show-running-contest{
-  height: 120px;
-  border: 3px solid darkred;
+  box-shadow: 5px 5px 15px rgba(139, 0, 0, 0.3) ;
+}
+
+.show-running-contest:hover {
+  transform: translateY(-3px);
+  transition: transform 0.3s;
 }
 
 /* 比赛标题样式 */

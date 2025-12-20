@@ -4,43 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tracker</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
+    <!-- 导航栏 -->
     <header>
-        <h1><a href="index.html">Tracker</a></h1>
-        <div class="nav">
-        <ul>
-          <li><a href="index/daily.html">📅 每日一题</a></li>
-          <li><a href="index/contest.html">🎯 最近比赛</a></li>
-          <li><a href="index/map.html">🗺️ 算法地图</a></li>
-        </ul>
-      </div>
-    </header>
-    <main>
-      <div class="body">
-        <div class="welcome">
-          <p>欢迎使用 HUTOJ Tracker！</p>
-          <p>请选择上方导航栏中的功能开始使用。</p>
-          <p><a href="https://acm.hut.edu.cn/">>>>点击进入HUTOJ官网<<<</a></p>
-          <img src="images/welcome.jpg" alt="欢迎图片">
-          
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">HUTTracker</a>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index/daily.html">每日一题</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index/contest.html">最近比赛</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index/map.html">算法地图</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index/login.html">登录</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index/register.html">注册</a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>  
-      
-      
+      </nav>
+    </header>
+
+    <!-- 介绍卡片 -->
+    <main>
+      <div class="card mb-3 text-center">
+        <div class="card-body">
+          <h2 class="card-title">欢迎使用 HUTOJ Tracker！</h2>
+            <p class="card-text">请选择上方导航栏中的功能开始使用。</p>
+            <img src="images/welcome.jpg" alt="欢迎图片" class="img-fluid rounded" >
+            <a href="https://acm.hut.edu.cn/" class="btn btn-primary mb-4">点击进入HUTOJ官网</a>
+        </div>
+      </div>
     </main>
 
-    <footer>
-        <p>Powered by HUT ACM Team</p>
+    <footer class="bg-light text-center py-3 mt-5">
+        <p class="text-muted mb-0">Powered by HUT ACM Team</p>
     </footer>
-        
 
-        
-    
-
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

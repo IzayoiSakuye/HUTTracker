@@ -1,32 +1,47 @@
-main .body {
-  margin: 50px 100px 50px 100px;
-  width: auto;
-  height: auto;
-  background-color: #ffffff;
-  border: 2px solid #ffffff;
-  border-radius: 20px;
-  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
-}
-main .body .welcome {
-  text-align: center;
-  margin-top: 50px;
+main {
+  min-height: calc(100vh - 200px);
+  padding: 40px 0;
 }
 
-main .body .welcome p {
-  font-size: 24px;
+.navbar-brand:hover {
+  color: inherit;
+}
+
+.card {
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) ;
+  margin:auto 100px;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.card-title {
   color: #333333;
-  margin: 20px 0;
+  font-weight: 600;
+  
 }
-main .body .welcome img {
-  width: 300px;
-  height: auto;
-  margin-top: 20px;
+
+.card-text {
+  color: #666666;
+}
+
+.btn-primary {
+  display: block;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+  padding: 12px 12px;
+  margin: 0px 500px;
+  
+}
+
+
+img {
+  margin-top: 30px;
   margin-bottom: 20px;
-}
-main .body .welcome a {
-  display: inline-block;
-  margin-top: 20px;
-  font-size: 20px;
-  color: #007BFF;
-  text-decoration: none;
+  max-width: 300px;
 }
