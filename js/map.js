@@ -1,107 +1,115 @@
-// 算法地图示例数据与渲染逻辑
-// 可替换 modules 数据或接入后端接口
-
 const modules = [
   {
-    id: 'array-basics',
-    stage: '基础',
-    title: '数组与枚举',
+    id: 'complexity',
+    stage: '新手入门',
+    title: '复杂度',
     difficulty: 'easy',
-    track: '基础',
-    tags: ['数组', '模拟'],
-    desc: '掌握数组遍历、前缀和、枚举思路。',
-    progress: 30,
+    tags: ['复杂度'],
+    desc: '学会计算时间复杂度与空间复杂度',
     resources: [
-      { label: '题单', link: 'https://www.luogu.com.cn/training/126379' },
-      { label: '讲义', link: 'https://oi-wiki.org/basic/array/' }
+      { label: 'wiki', link: 'https://oi-wiki.org/basic/complexity/' }
     ]
   },
   {
-    id: 'graph-basic',
-    stage: '基础',
-    title: '图与遍历',
-    difficulty: 'medium',
-    track: '基础',
-    tags: ['BFS', 'DFS'],
-    desc: '理解无向/有向图存储，练习 BFS/DFS。',
-    progress: 20,
+    id: 'sort',
+    stage: '新手入门',
+    title: '排序',
+    difficulty: 'easy',
+    tags: ['排序'],
+    desc: '基础的排序算法',
     resources: [
-      { label: 'OI-Wiki', link: 'https://oi-wiki.org/graph/bfs/' }
+      { label: '题单', link: 'https://www.luogu.com.cn/training/107' },
+      { label: 'wiki', link: 'https://oi-wiki.org/basic/sort-intro/' }
+    ]
+  },
+  {
+    id: 'divide-conquer',
+    stage: '新手入门',
+    title: '递归&分治',
+    difficulty: 'easy',
+    tags: ['递归', '分治'],
+    desc: '学习递归与分支的基本思想',
+    resources: [
+      { label: '题单', link: 'https://www.luogu.com.cn/training/109' },
+      { label: 'wiki', link: 'https://oi-wiki.org/basic/divide-and-conquer/' }
+    ]
+  },
+  {
+    id: 'binary',
+    stage: '新手入门',
+    title: '二分',
+    difficulty: 'easy',
+    tags: ['递归', '分治'],
+    desc: '学习二分搜索，二分查找以及三分等基本思想',
+    resources: [
+      { label: '题单', link: 'https://www.luogu.com.cn/training/111' },
+      { label: 'wiki', link: 'https://oi-wiki.org/basic/binary/' }
     ]
   },
   {
     id: 'dp-intro',
-    stage: '进阶',
+    stage: '进阶知识',
     title: '动态规划入门',
     difficulty: 'medium',
-    track: '进阶',
     tags: ['DP', '入门'],
-    desc: '线性 DP、背包 DP 的经典模型。',
-    progress: 10,
+    desc: '学习线性 DP、背包 DP 的经典模型。',
     resources: [
-      { label: '背包九讲', link: 'https://github.com/tianyicui/pack' }
+      { label: '背包九讲', link: 'https://github.com/tianyicui/pack' },
+      { label: '题单', link: 'https://www.luogu.com.cn/training/211' }
     ]
   },
   {
-    id: 'tree-advanced',
-    stage: '进阶',
-    title: '树与 LCA',
+    id: 'seg-tree',
+    stage: '新手出门',
+    title: '线段树',
     difficulty: 'hard',
-    track: '进阶',
-    tags: ['树', 'LCA'],
-    desc: '根植树、重心、LCA（倍增）。',
-    progress: 5,
+    tags: ['数据结构', '树'],
+    desc: '一种高级且通用的数据结构',
     resources: [
-      { label: 'OI-Wiki', link: 'https://oi-wiki.org/graph/lca/' }
+      { label: 'wiki', link: 'https://oi-wiki.org/ds/seg/' },
+      { label: '题单', link: 'https://www.luogu.com.cn/training/206' }
+
     ]
   },
   {
-    id: 'contest-setup',
-    stage: '竞赛',
-    title: '比赛前置准备',
-    difficulty: 'easy',
-    track: '竞赛',
-    tags: ['模板', '调试'],
-    desc: '熟悉模板、常用调试、IO 优化。',
-    progress: 60,
+    id: 'number-theroy',
+    stage: '进阶知识',
+    title: '数论',
+    difficulty: 'medium',
+    tags: ['数学', '数论'],
+    desc: '学习简单的数论知识',
     resources: [
-      { label: '模板集合', link: 'https://cp-algorithms.com/' }
+      { label: '入门题单', link: 'https://www.luogu.com.cn/training/117' },
+      { label: '进阶题单', link: 'https://www.luogu.com.cn/training/216' }
     ]
   }
 ];
 
-const stageOrder = ['基础', '进阶', '竞赛'];
+const stageOrder = ['新手入门', '进阶知识', '新手出门'];
 
 function renderMap() {
   const grid = document.getElementById('map-grid');
-  if (!grid) return;
-
-  const track = document.getElementById('track-select').value;
-  const difficulty = document.getElementById('difficulty-select').value;
   const keyword = document.getElementById('keyword-input').value.trim().toLowerCase();
 
   grid.innerHTML = '';
-
   stageOrder.forEach(stage => {
     const col = document.createElement('section');
     col.className = 'col-12 col-lg-4 map-column';
 
     const header = document.createElement('div');
-    header.className = 'map-column__header';
-    header.innerHTML = `<div class="title">${stage}</div><div class="hint">学习路径</div>`;
+    header.className = 'map-header';
+    header.innerHTML = `<div class="title">${stage}</div>`;
     col.appendChild(header);
 
     const list = document.createElement('div');
-    list.className = 'map-column__list';
+    list.className = 'map-list';
 
     const filtered = modules.filter(m => {
       const hitStage = m.stage === stage;
-      const hitTrack = track === 'all' || m.track === track;
-      const hitDiff = difficulty === 'all' || m.difficulty === difficulty;
       const hitKeyword = !keyword ||
         m.title.toLowerCase().includes(keyword) ||
         m.tags.some(t => t.toLowerCase().includes(keyword));
-      return hitStage && hitTrack && hitDiff && hitKeyword;
+      return hitStage && hitKeyword;
     });
 
     if (filtered.length === 0) {
@@ -119,24 +127,24 @@ function renderMap() {
 }
 
 function renderCard(mod) {
-  const card = document.createElement('article');
+  const card = document.createElement('div');
   card.className = 'map-card';
 
   const badge = document.createElement('span');
-  badge.className = `badge ${difficultyClass(mod.difficulty)}`;
+  badge.className = `badge ${diff(mod.difficulty)}`;
   badge.textContent = mod.difficulty.toUpperCase();
 
   const title = document.createElement('div');
-  title.className = 'map-card__title';
+  title.className = 'map-cardtitle';
   title.textContent = mod.title;
   title.appendChild(badge);
 
   const desc = document.createElement('p');
-  desc.className = 'map-card__desc';
+  desc.className = 'map-carddesc';
   desc.textContent = mod.desc;
 
   const tags = document.createElement('div');
-  tags.className = 'map-card__tags';
+  tags.className = 'map-cardtags';
   mod.tags.forEach(t => {
     const tag = document.createElement('span');
     tag.className = 'tag';
@@ -144,17 +152,8 @@ function renderCard(mod) {
     tags.appendChild(tag);
   });
 
-  const progressWrap = document.createElement('div');
-  progressWrap.className = 'map-card__progress';
-  progressWrap.innerHTML = `
-    <div class="progress-label">完成度 ${mod.progress}%</div>
-    <div class="progress">
-      <div class="progress-bar" role="progressbar" style="width:${mod.progress}%" aria-valuenow="${mod.progress}" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-  `;
-
   const actions = document.createElement('div');
-  actions.className = 'map-card__actions';
+  actions.className = 'map-cardactions';
   mod.resources.forEach(r => {
     const a = document.createElement('a');
     a.className = 'btn btn-sm btn-outline-primary';
@@ -168,12 +167,11 @@ function renderCard(mod) {
   card.appendChild(title);
   card.appendChild(desc);
   card.appendChild(tags);
-  card.appendChild(progressWrap);
   card.appendChild(actions);
   return card;
 }
 
-function difficultyClass(level) {
+function diff(level) {
   switch (level) {
     case 'easy':
       return 'bg-success';
@@ -187,17 +185,11 @@ function difficultyClass(level) {
 }
 
 function bindMapEvents() {
-  ['track-select', 'difficulty-select', 'keyword-input'].forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const eventName = id === 'keyword-input' ? 'input' : 'change';
-    el.addEventListener(eventName, renderMap);
-  });
+  const keywordInput = document.getElementById('keyword-input');
+  if (!keywordInput) return;
+  keywordInput.addEventListener('input', renderMap);
 }
 
-function initMap() {
-  bindMapEvents();
-  renderMap();
-}
+bindMapEvents();
+renderMap();
 
-document.addEventListener('DOMContentLoaded', initMap);
