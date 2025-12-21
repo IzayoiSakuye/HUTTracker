@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
           contestContainer.appendChild(futureTitle);
         }
         upcomingContests.forEach(contest => {
-          const contestElement = document.createElement('div');
+          const contestElement = document.createElement('li');
           contestElement.className = "contest-item";
           contestElement.innerHTML = `
             <h3><a href="${contest.link}" target="_blank">${contest.name}</a></h3>
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             upcomingContests.forEach(contest => {
-              const contestElement = document.createElement('div');
+              const contestElement = document.createElement('li');
               const contestLink = `https://codeforces.com/contests`;
               contestElement.className = "contest-item";
               contestElement.innerHTML = `

@@ -1,4 +1,6 @@
-const modules = [
+const API_BASE = window.location.origin.startsWith('file') ? 'http://localhost:3000' : window.location.origin;
+
+const fallbackModules = [
   {
     id: 'complexity',
     stage: '新手入门',
@@ -21,76 +23,21 @@ const modules = [
       { label: '题单', link: 'https://www.luogu.com.cn/training/107' },
       { label: 'wiki', link: 'https://oi-wiki.org/basic/sort-intro/' }
     ]
-  },
-  {
-    id: 'divide-conquer',
-    stage: '新手入门',
-    title: '递归&分治',
-    difficulty: 'easy',
-    tags: ['递归', '分治'],
-    desc: '学习递归与分支的基本思想',
-    resources: [
-      { label: '题单', link: 'https://www.luogu.com.cn/training/109' },
-      { label: 'wiki', link: 'https://oi-wiki.org/basic/divide-and-conquer/' }
-    ]
-  },
-  {
-    id: 'binary',
-    stage: '新手入门',
-    title: '二分',
-    difficulty: 'easy',
-    tags: ['递归', '分治'],
-    desc: '学习二分搜索，二分查找以及三分等基本思想',
-    resources: [
-      { label: '题单', link: 'https://www.luogu.com.cn/training/111' },
-      { label: 'wiki', link: 'https://oi-wiki.org/basic/binary/' }
-    ]
-  },
-  {
-    id: 'dp-intro',
-    stage: '进阶知识',
-    title: '动态规划入门',
-    difficulty: 'medium',
-    tags: ['DP', '入门'],
-    desc: '学习线性 DP、背包 DP 的经典模型。',
-    resources: [
-      { label: '背包九讲', link: 'https://github.com/tianyicui/pack' },
-      { label: '题单', link: 'https://www.luogu.com.cn/training/211' }
-    ]
-  },
-  {
-    id: 'seg-tree',
-    stage: '新手出门',
-    title: '线段树',
-    difficulty: 'hard',
-    tags: ['数据结构', '树'],
-    desc: '一种高级且通用的数据结构',
-    resources: [
-      { label: 'wiki', link: 'https://oi-wiki.org/ds/seg/' },
-      { label: '题单', link: 'https://www.luogu.com.cn/training/206' }
-
-    ]
-  },
-  {
-    id: 'number-theroy',
-    stage: '进阶知识',
-    title: '数论',
-    difficulty: 'medium',
-    tags: ['数学', '数论'],
-    desc: '学习简单的数论知识',
-    resources: [
-      { label: '入门题单', link: 'https://www.luogu.com.cn/training/117' },
-      { label: '进阶题单', link: 'https://www.luogu.com.cn/training/216' }
-    ]
   }
 ];
 
-const stageOrder = ['新手入门', '进阶知识', '新手出门'];
+let modules = [];
+
+function stageOrderFromData() {
+  const set = new Set();
+  modules.forEach(m => set.add(m.stage || '未分组'));
+  return Array.from(set);
+}
 
 function renderMap() {
   const grid = document.getElementById('map-grid');
   const keyword = document.getElementById('keyword-input').value.trim().toLowerCase();
-
+  const stageOrder = stageOrderFromData();
   grid.innerHTML = '';
   stageOrder.forEach(stage => {
     const col = document.createElement('section');
@@ -115,7 +62,7 @@ function renderMap() {
     if (filtered.length === 0) {
       const empty = document.createElement('div');
       empty.className = 'map-card empty';
-      empty.textContent = '暂无匹配条目';
+      empty.textContent = '暂无匹配内容';
       list.appendChild(empty);
     } else {
       filtered.forEach(m => list.appendChild(renderCard(m)));
@@ -172,7 +119,8 @@ function renderCard(mod) {
 }
 
 function diff(level) {
-  switch (level) {
+  const lv = level === '入门' ? 'easy' : level === '进阶' ? 'medium' : level === '挑战' ? 'hard' : level;
+  switch (lv) {
     case 'easy':
       return 'bg-success';
     case 'medium':
@@ -190,6 +138,33 @@ function bindMapEvents() {
   keywordInput.addEventListener('input', renderMap);
 }
 
+function normalizeNodes(list) {
+  return (list || []).map(item => ({
+    id: item.id,
+    stage: item.module || '未分组',
+    title: item.title,
+    difficulty: item.difficulty,
+    tags: Array.isArray(item.tags) && item.tags.length ? item.tags : [item.module || '未分组'],
+    desc: item.summary || '',
+    resources: Array.isArray(item.resources) && item.resources.length
+      ? item.resources
+      : (item.link ? [{ label: '资源', link: item.link }] : [])
+  }));
+}
+
+async function loadMapFromApi() {
+  try {
+    const res = await fetch(`${API_BASE}/map/list`);
+    if (!res.ok) throw new Error('fail');
+    const data = await res.json();
+    const normalized = normalizeNodes(data.result);
+    modules = normalized.length > 0 ? normalized : fallbackModules;
+  } catch (_e) {
+    modules = fallbackModules;
+  }
+  renderMap();
+}
+
 bindMapEvents();
-renderMap();
+loadMapFromApi();
 

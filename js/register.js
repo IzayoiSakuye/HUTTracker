@@ -6,8 +6,8 @@ const emailReg = document.getElementById('emailReg');
 const passwordReg = document.getElementById('passwordReg');
 const confirmPass = document.getElementById('confirmPassword');
 
-const usernameRegex = /^[A-Za-z0-9_]{6,20}$/; // 仅数字、字母、下划线, 长度6-20位
-const passwordRegex = /^.{6,20}$/; // 长度6-20位
+const usernameRegex = /^[A-Za-z0-9_]{6,20}$/; 
+const passwordRegex = /^.{6,20}$/; 
 const nicknameRegex = /^[\p{L}\p{N}_]{2,20}$/u;
 const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 

@@ -3,8 +3,8 @@ const form = document.querySelector('form');
 const usernameInput = document.getElementById('usernameInput');
 const passwordInput = document.getElementById('passwordInput');
 
-const usernameRegex = /^[A-Za-z0-9]+$/; // 仅数字和字母
-const passwordRegex = /^.{6,20}$/; // 长度 6-20 位
+const usernameRegex = /^[A-Za-z0-9_]{6,20}$/; 
+const passwordRegex = /^.{6,20}$/; 
 
 
 const API_BASE = window.location.origin.startsWith('file') ? 'http://localhost:3000' : window.location.origin;
@@ -27,7 +27,7 @@ function showToast(message, type = 'info') {
     toast.style.transition = 'opacity 0.3s ease';
     toast.style.opacity = '0';
     setTimeout(() => toast.remove(), 300);
-  }, 1600);
+  }, 2000);
 }
 
 function addValidClass(input, isValid) {

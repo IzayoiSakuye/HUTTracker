@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>后台管理</title>
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../index.html">HUTTracker</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="daily.html">每日一题</a></li>
+            <li class="nav-item"><a class="nav-link" href="contest.html">最近比赛</a></li>
+            <li class="nav-item"><a class="nav-link" href="map.html">算法地图</a></li>
+            <li class="nav-item"><a class="nav-link" href="login.html">登录</a></li>
+            <li class="nav-item"><a class="nav-link" href="register.html">注册</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="admin-shell container py-4">
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <section class="admin-card card h-100">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <div>
+              <h5 class="mb-1">每日一题管理</h5>
+              <small class="text-muted">修改标题、内容或发布日期</small>
+            </div>
+            <span class="badge text-bg-primary">题库</span>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label class="form-label">题目日期</label>
+              <input type="date" id="daily-date" class="form-control" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">题目标题</label>
+              <input type="text" id="daily-title" class="form-control" placeholder="" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">难度</label>
+              <select id="daily-difficulty" class="form-select" aria-placeholder="请选择难度">
+                
+                
+                <option value="red">入门 </option>
+                <option value="orange">普及- </option>
+                <option value="yellow">普及/提高− </option>
+                <option value="green" >普及+/提高 </option>
+                <option value="blue">提高+/省选− </option>
+                <option value="purple">省选/NOI− </option>
+                <option value="black">NOI/CTSC </option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">题目链接</label>
+              <input type="url" id="daily-link" class="form-control" placeholder="" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">题目内容 (Markdown)</label>
+              <textarea id="daily-content" class="form-control" rows="6" placeholder="支持 Markdown 与 KaTeX"></textarea>
+            </div>
+            <div class="d-flex gap-2">
+              <button id="save-daily" class="btn btn-primary">保存/更新</button>
+              <button id="preview-daily" class="btn btn-outline-secondary">预览</button>
+            </div>
+            <div class="mt-4">
+              <h6 class="text-muted mb-2">最近发布</h6>
+              <ul id="daily-history" class="list-group list-group-flush small"></ul>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-lg-6">
+        <section class="admin-card card h-100">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <div>
+              <h5 class="mb-1">算法地图管理</h5>
+              <small class="text-muted">添加或调整学习节点</small>
+            </div>
+            <span class="badge text-bg-success">地图</span>
+          </div>
+          <div class="card-body">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">所属模块</label>
+                <input type="text" id="map-module" class="form-control" placeholder="" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">难度</label>
+                <select id="map-difficulty" class="form-select">
+                  <option value="easy">easy</option>
+                  <option value="medium">medium</option>
+                  <option value="hard">hard</option>
+                </select>
+              </div>
+              <div class="col-md-12">
+                <label class="form-label">节点标题</label>
+                <input type="text" id="map-title" class="form-control" placeholder="" />
+              </div>
+              <div class="col-md-12">
+                <label class="form-label">标签（逗号分隔）</label>
+                <input type="text" id="map-tags" class="form-control" placeholder="" />
+              </div>
+              <div class="col-md-12">
+                <label class="form-label">摘要</label>
+                <textarea id="map-summary" class="form-control" rows="3" placeholder=""></textarea>
+              </div>
+              <div class="col-md-12">
+                <label class="form-label">资源链接</label>
+                <textarea id="map-resources" class="form-control" rows="3" placeholder="格式：标签|链接，一行一个"></textarea>
+              </div>
+            </div>
+            <div class="d-flex gap-2 mt-3">
+              <button id="add-map-node" class="btn btn-success">新增节点</button>
+              <button id="reset-map-form" class="btn btn-outline-secondary">清空</button>
+            </div>
+            <div class="mt-4">
+              <h6 class="text-muted mb-2">最近新增</h6>
+              <div id="map-recent" class="recent-pills d-flex flex-wrap gap-2"></div>
+              <div class="table-responsive mt-3">
+                <table class="table table-sm align-middle">
+                  <thead>
+                    <tr>
+                      <th>#</th><th>模块</th><th>标题</th><th>标签</th><th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody id="map-admin-list"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-12">
+        <section class="admin-card card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <div>
+              <h5 class="mb-1">权限管理</h5>
+              <small class="text-muted">仅 superadmin 可调整 admin 权限</small>
+            </div>
+            <span class="badge text-bg-warning">权限</span>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-info d-flex align-items-center gap-2" role="alert">
+              <span class="badge text-bg-dark">Tip</span>
+              <div>superadmin 可切换 admin 状态；admin 仅能查看列表。</div>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-middle">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>用户名</th>
+                    <th>昵称</th>
+                    <th>邮箱</th>
+                    <th>admin</th>
+                    <th>superadmin</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="user-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-light text-center py-3 mt-5">
+    <p class="text-muted mb-0">Powered by HUT ACM Team</p>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

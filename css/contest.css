@@ -24,6 +24,18 @@ main .thx{
   padding: 10px;
 }
 
+main .show-contest{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+main .show-contest .contest-item{
+   width: 100%;
+  
+}
+
 main .show-recent-contest{
   box-shadow: 5px 5px 15px rgba(0, 128, 0, 0.3) ;
 } 
@@ -41,6 +53,7 @@ main .show-running-contest{
   transform: translateY(-3px);
   transition: transform 0.3s;
 }
+
 
 /* 比赛标题样式 */
 main .future-title,
